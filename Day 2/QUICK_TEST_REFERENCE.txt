@@ -1,0 +1,247 @@
+================================================================================
+QUICK TEST REFERENCE - Day 2 Programs
+================================================================================
+
+GRAPH USED FOR TESTING:
+- 4 vertices (0, 1, 2, 3)
+- Edges: (0,1), (1,2), (2,3), (0,2)
+- Total edges: 4
+- Degrees: [2, 2, 3, 1]
+
+================================================================================
+FILE 1.py - Count Edges (Matrix)
+================================================================================
+INPUT:
+4
+0 1 1 0
+1 0 1 0
+1 1 0 1
+0 0 1 0
+
+OUTPUT:
+Adjacency Matrix:
+[0, 1, 1, 0]
+[1, 0, 1, 0]
+[1, 1, 0, 1]
+[0, 0, 1, 0]
+Number of edges: 4
+
+================================================================================
+FILE 2.py - Count Edges (List)
+================================================================================
+INPUT:
+4
+1 2
+0 2
+0 1 3
+2
+
+OUTPUT:
+Adjacency List:
+Vertex 0: [1, 2]
+Vertex 1: [0, 2]
+Vertex 2: [0, 1, 3]
+Vertex 3: [2]
+Number of edges: 4
+
+================================================================================
+FILE 3.py - Calculate Degrees (Matrix)
+================================================================================
+INPUT:
+4
+0 1 1 0
+1 0 1 0
+1 1 0 1
+0 0 1 0
+
+OUTPUT:
+Adjacency Matrix:
+[0, 1, 1, 0]
+[1, 0, 1, 0]
+[1, 1, 0, 1]
+[0, 0, 1, 0]
+Degrees: [2, 2, 3, 1]
+
+================================================================================
+FILE 4.py - Calculate Degrees (List)
+================================================================================
+INPUT:
+4
+1 2
+0 2
+0 1 3
+2
+
+OUTPUT:
+Adjacency List:
+Vertex 0: [1, 2]
+Vertex 1: [0, 2]
+Vertex 2: [0, 1, 3]
+Vertex 3: [2]
+Degrees: [2, 2, 3, 1]
+
+================================================================================
+FILE 5.py - Check Direct Connection (Matrix)
+================================================================================
+TEST 1 - Connected (0 and 1):
+INPUT:
+4
+0 1 1 0
+1 0 1 0
+1 1 0 1
+0 0 1 0
+0
+1
+
+OUTPUT:
+Vertices 0 and 1 are directly connected.
+
+TEST 2 - Not Connected (0 and 3):
+INPUT:
+4
+0 1 1 0
+1 0 1 0
+1 1 0 1
+0 0 1 0
+0
+3
+
+OUTPUT:
+Vertices 0 and 3 are NOT directly connected.
+
+================================================================================
+FILE 6.py - Check Direct Connection (List)
+================================================================================
+TEST 1 - Connected (0 and 1):
+INPUT:
+4
+1 2
+0 2
+0 1 3
+2
+0
+1
+
+OUTPUT:
+Vertices 0 and 1 are directly connected.
+
+TEST 2 - Not Connected (0 and 3):
+INPUT:
+4
+1 2
+0 2
+0 1 3
+2
+0
+3
+
+OUTPUT:
+Vertices 0 and 3 are NOT directly connected.
+
+================================================================================
+FILE 7.py - Check Path Existence (Matrix)
+================================================================================
+TEST 1 - Valid Path (0 1 2 3):
+INPUT:
+4
+0 1 1 0
+1 0 1 0
+1 1 0 1
+0 0 1 0
+0 1 2 3
+
+OUTPUT:
+Path exists with sequence: [0, 1, 2, 3]
+Length of the path: 3
+
+TEST 2 - Invalid Path (0 3):
+INPUT:
+4
+0 1 1 0
+1 0 1 0
+1 1 0 1
+0 0 1 0
+0 3
+
+OUTPUT:
+Path does NOT exist with sequence: [0, 3]
+
+TEST 3 - Valid Path (0 2 3):
+INPUT:
+4
+0 1 1 0
+1 0 1 0
+1 1 0 1
+0 0 1 0
+0 2 3
+
+OUTPUT:
+Path exists with sequence: [0, 2, 3]
+Length of the path: 2
+
+================================================================================
+FILE 8.py - Check Path Existence (List)
+================================================================================
+TEST 1 - Valid Path (0 1 2 3):
+INPUT:
+4
+1 2
+0 2
+0 1 3
+2
+0 1 2 3
+
+OUTPUT:
+Path exists with sequence: [0, 1, 2, 3]
+Length of the path: 3
+
+TEST 2 - Invalid Path (0 3):
+INPUT:
+4
+1 2
+0 2
+0 1 3
+2
+0 3
+
+OUTPUT:
+Path does NOT exist with sequence: [0, 3]
+
+TEST 3 - Valid Path (0 2 3):
+INPUT:
+4
+1 2
+0 2
+0 1 3
+2
+0 2 3
+
+OUTPUT:
+Path exists with sequence: [0, 2, 3]
+Length of the path: 2
+
+================================================================================
+SIMPLE TEST - Triangle Graph (3 vertices)
+================================================================================
+For a simpler test, use this triangle graph:
+
+MATRIX INPUT:
+3
+0 1 1
+1 0 1
+1 1 0
+
+LIST INPUT:
+3
+1 2
+0 2
+0 1
+
+Expected results:
+- Edges: 3
+- Degrees: [2, 2, 2]
+- All vertices are directly connected
+- Any sequence forms a valid path
+
+================================================================================
+
