@@ -1,0 +1,547 @@
+================================================================================
+QUICK TEST REFERENCE - Day 3 Programs
+================================================================================
+
+================================================================================
+FILE 1.py - List Operations (Insert, Delete, Search)
+================================================================================
+
+TEST CASE 1 - Insert Operation:
+INPUT:
+10 20 30 40 50
+1
+2
+25
+
+OUTPUT:
+Element inserted successfully!
+Updated list: [10, 20, 25, 30, 40, 50]
+
+TEST CASE 2 - Delete by Value:
+INPUT:
+10 20 30 40 50
+2
+30
+
+OUTPUT:
+Element '30' deleted successfully!
+Updated list: [10, 20, 40, 50]
+
+TEST CASE 3 - Delete by Index:
+INPUT:
+10 20 30 40 50
+3
+1
+
+OUTPUT:
+Element at index 1 (20) deleted successfully!
+Updated list: [10, 30, 40, 50]
+
+TEST CASE 4 - Search Operation:
+INPUT:
+10 20 30 40 50
+4
+40
+
+OUTPUT:
+Element '40' found at index: 3
+
+TEST CASE 5 - Search Non-existent Element:
+INPUT:
+10 20 30 40 50
+4
+100
+
+OUTPUT:
+Element '100' not found in the list!
+
+================================================================================
+FILE 2.py - Remove Duplicates from List
+================================================================================
+
+TEST CASE 1 - With Duplicates:
+INPUT:
+1 2 2 3 4 4 5 1 6
+
+OUTPUT:
+Original list: [1, 2, 2, 3, 4, 4, 5, 1, 6]
+Original length: 9
+
+Method 1 (Preserve Order): [1, 2, 3, 4, 5, 6]
+Length after removing duplicates: 6
+
+Method 2 (Using dict.fromkeys): [1, 2, 3, 4, 5, 6]
+Length after removing duplicates: 6
+
+Method 3 (Using set - no order): [1, 2, 3, 4, 5, 6]
+Length after removing duplicates: 6
+
+Duplicate elements that were removed: [1, 2, 4]
+
+TEST CASE 2 - String List with Duplicates:
+INPUT:
+apple banana apple orange banana grape
+
+OUTPUT:
+Original list: ['apple', 'banana', 'apple', 'orange', 'banana', 'grape']
+Original length: 6
+
+Method 1 (Preserve Order): ['apple', 'banana', 'orange', 'grape']
+Length after removing duplicates: 4
+
+Duplicate elements that were removed: ['apple', 'banana']
+
+TEST CASE 3 - No Duplicates:
+INPUT:
+1 2 3 4 5
+
+OUTPUT:
+Original list: [1, 2, 3, 4, 5]
+Original length: 5
+
+Method 1 (Preserve Order): [1, 2, 3, 4, 5]
+Length after removing duplicates: 5
+
+No duplicates found in the list!
+
+================================================================================
+FILE 3.py - Sum and Average of List
+================================================================================
+
+TEST CASE 1 - Integer List:
+INPUT:
+10 20 30 40 50
+
+OUTPUT:
+List: [10, 20, 30, 40, 50]
+Number of elements: 5
+Sum: 150
+Average: 30.00
+
+Minimum value: 10
+Maximum value: 50
+
+TEST CASE 2 - Float List:
+INPUT:
+10.5 20.3 30.7 40.2 50.9
+
+OUTPUT:
+List: [10.5, 20.3, 30.7, 40.2, 50.9]
+Number of elements: 5
+Sum: 152.6
+Average: 30.52
+
+Minimum value: 10.5
+Maximum value: 50.9
+
+TEST CASE 3 - Mixed Numbers:
+INPUT:
+1 2.5 3 4.75 5
+
+OUTPUT:
+List: [1, 2.5, 3, 4.75, 5]
+Number of elements: 5
+Sum: 16.25
+Average: 3.25
+
+TEST CASE 4 - Single Element:
+INPUT:
+42
+
+OUTPUT:
+List: [42]
+Number of elements: 1
+Sum: 42
+Average: 42.00
+
+================================================================================
+FILE 4.py - Swap Two Elements Using Indices
+================================================================================
+
+TEST CASE 1 - Normal Swap:
+INPUT:
+10 20 30 40 50
+0
+4
+
+OUTPUT:
+Swapped elements at indices 0 and 4
+  Index 0: 10 -> 50
+  Index 4: 50 -> 10
+
+Updated list: [50, 20, 30, 40, 10]
+
+TEST CASE 2 - Swap Adjacent Elements:
+INPUT:
+10 20 30 40 50
+1
+2
+
+OUTPUT:
+Swapped elements at indices 1 and 2
+  Index 1: 20 -> 30
+  Index 2: 30 -> 20
+
+Updated list: [10, 30, 20, 40, 50]
+
+TEST CASE 3 - Swap Same Index:
+INPUT:
+10 20 30 40 50
+2
+2
+
+OUTPUT:
+Swapped elements at indices 2 and 2
+  Index 2: 30 -> 30
+  Index 2: 30 -> 30
+
+Updated list: [10, 20, 30, 40, 50]  (no change)
+
+TEST CASE 4 - Invalid Index (Error Case):
+INPUT:
+10 20 30 40 50
+0
+10
+
+OUTPUT:
+Error: Index 10 is out of range!
+
+================================================================================
+FILE 5.py - Dictionary Keys and Values
+================================================================================
+
+TEST CASE 1 - Default Dictionary:
+INPUT:
+2
+
+OUTPUT:
+Dictionary: {'name': 'John', 'age': 30, 'city': 'New York', 'salary': 50000.5, 'is_active': True, 'skills': ['Python', 'Java', 'SQL']}
+
+Total number of key-value pairs: 6
+
+Keys in the dictionary:
+  - name
+  - age
+  - city
+  - salary
+  - is_active
+  - skills
+
+Values in the dictionary:
+  - John
+  - 30
+  - New York
+  - 50000.5
+  - True
+  - ['Python', 'Java', 'SQL']
+
+Key-Value pairs in the dictionary:
+  name: John
+  age: 30
+  city: New York
+  salary: 50000.5
+  is_active: True
+  skills: ['Python', 'Java', 'SQL']
+
+TEST CASE 2 - Manual Entry:
+INPUT:
+1
+name
+Alice
+age
+25
+city
+London
+<Enter> (empty key to finish)
+
+OUTPUT:
+Dictionary: {'name': 'Alice', 'age': 25, 'city': 'London'}
+Total number of key-value pairs: 3
+Keys: name, age, city
+Values: Alice, 25, London
+
+================================================================================
+FILE 6.py - Count Frequency of Elements
+================================================================================
+
+TEST CASE 1 - Integer List:
+INPUT:
+1 2 3 2 1 4 2 5 1 3
+
+OUTPUT:
+Original list: [1, 2, 3, 2, 1, 4, 2, 5, 1, 3]
+List length: 10
+
+Frequency dictionary: {1: 3, 2: 3, 3: 2, 4: 1, 5: 1}
+
+FREQUENCY COUNT
+==================================================
+Element          Frequency  
+-------------------------
+1                3         
+2                3         
+3                2         
+4                1         
+5                1         
+==================================================
+
+Total unique elements: 5
+Most common element(s): [1, 2]
+Highest frequency: 3
+Least common element(s): [4, 5]
+Lowest frequency: 1
+
+TEST CASE 2 - String List:
+INPUT:
+apple banana apple orange banana apple
+
+OUTPUT:
+Original list: ['apple', 'banana', 'apple', 'orange', 'banana', 'apple']
+List length: 6
+
+Frequency dictionary: {'apple': 3, 'banana': 2, 'orange': 1}
+
+Most common element(s): ['apple']
+Highest frequency: 3
+
+TEST CASE 3 - All Unique Elements:
+INPUT:
+1 2 3 4 5
+
+OUTPUT:
+Frequency dictionary: {1: 1, 2: 1, 3: 1, 4: 1, 5: 1}
+Total unique elements: 5
+Most common element(s): [1, 2, 3, 4, 5]
+Highest frequency: 1
+Lowest frequency: 1
+
+================================================================================
+FILE 7.py - Check Key Exists in Dictionary
+================================================================================
+
+TEST CASE 1 - Key Exists:
+INPUT:
+2
+name
+
+OUTPUT:
+Dictionary: {'name': 'Alice', 'age': 25, 'city': 'London', 'salary': 45000, 'is_active': True, 'department': 'Engineering'}
+Available keys: ['name', 'age', 'city', 'salary', 'is_active', 'department']
+
+Method 1 (using 'in' operator):
+  Key 'name' exists: True
+
+Method 2 (using .get() method):
+  Key 'name' exists with value: Alice
+
+Method 3 (using .get() with default):
+  Value for 'name': Alice
+
+Method 4 (using try-except):
+  Key 'name' exists with value: Alice
+
+TEST CASE 2 - Key Does Not Exist:
+INPUT:
+2
+phone
+
+OUTPUT:
+Method 1 (using 'in' operator):
+  Key 'phone' exists: False
+
+Method 2 (using .get() method):
+  Key 'phone' does not exist
+
+Method 3 (using .get() with default):
+  Value for 'phone': NOT FOUND
+
+Method 4 (using try-except):
+  Key 'phone' does not exist (KeyError raised)
+
+TEST CASE 3 - Check Multiple Keys:
+INPUT:
+2
+age
+salary
+email
+quit
+
+OUTPUT:
+(Will check each key one by one, showing results for each)
+
+================================================================================
+FILE 8.py - 2D Grid Operations
+================================================================================
+
+TEST CASE 1 - Default Grid:
+INPUT:
+2
+1
+1
+
+OUTPUT:
+2D GRID
+==================================================
+Grid dimensions: 4 x 4
+
+Grid layout:
+     0   1   2   3
+ 0   1   0   1   1
+ 1   1   1   0   1
+ 2   0   1   1   1
+ 3   1   1   1   0
+==================================================
+
+Number of obstacles (cells with value 0): 4
+
+Operations for cell (1, 1):
+--------------------------------------------------
+1. Is cell (1, 1) inside grid boundary? True
+   Cell value: 1
+
+2. Valid neighbors (up, down, left, right):
+   Total valid neighbors: 4
+   Up     -> (0, 1) = 0
+   Down   -> (2, 1) = 1
+   Left   -> (1, 0) = 1
+   Right  -> (1, 2) = 0
+--------------------------------------------------
+
+TEST CASE 2 - Corner Cell:
+INPUT:
+2
+0
+0
+
+OUTPUT:
+Operations for cell (0, 0):
+--------------------------------------------------
+1. Is cell (0, 0) inside grid boundary? True
+   Cell value: 1
+
+2. Valid neighbors (up, down, left, right):
+   Total valid neighbors: 2
+   Down   -> (1, 0) = 1
+   Right  -> (0, 1) = 0
+--------------------------------------------------
+
+TEST CASE 3 - Edge Cell:
+INPUT:
+2
+0
+2
+
+OUTPUT:
+Operations for cell (0, 2):
+--------------------------------------------------
+1. Is cell (0, 2) inside grid boundary? True
+   Cell value: 1
+
+2. Valid neighbors (up, down, left, right):
+   Total valid neighbors: 3
+   Down   -> (1, 2) = 0
+   Left   -> (0, 1) = 0
+   Right  -> (0, 3) = 1
+--------------------------------------------------
+
+TEST CASE 4 - Invalid Cell (Out of Boundary):
+INPUT:
+2
+5
+5
+
+OUTPUT:
+Operations for cell (5, 5):
+--------------------------------------------------
+1. Is cell (5, 5) inside grid boundary? False
+   Error: Cell (5, 5) is outside the grid boundary!
+   Grid dimensions: 4 x 4
+   Valid range: row [0, 3], col [0, 3]
+--------------------------------------------------
+
+TEST CASE 5 - Manual Grid Entry:
+INPUT:
+1
+3
+3
+1 0 1
+0 1 0
+1 1 1
+
+OUTPUT:
+Grid dimensions: 3 x 3
+Grid layout:
+     0   1   2
+ 0   1   0   1
+ 1   0   1   0
+ 2   1   1   1
+
+Number of obstacles (cells with value 0): 4
+
+TEST CASE 6 - Check Obstacles:
+For default grid:
+- Total cells: 16
+- Obstacles (0): 4
+- Free cells (1): 12
+
+Positions of obstacles: (0,1), (1,2), (2,0), (3,3)
+
+================================================================================
+SIMPLE TEST CASES - Quick Verification
+================================================================================
+
+FILE 1.py - Quick Test:
+- Create list: [1, 2, 3]
+- Insert 5 at index 1: [1, 5, 2, 3]
+- Delete value 2: [1, 5, 3]
+- Search for 5: Found at index 1
+
+FILE 2.py - Quick Test:
+- Input: [1, 1, 2, 2, 3]
+- Output: [1, 2, 3]
+
+FILE 3.py - Quick Test:
+- Input: [1, 2, 3, 4, 5]
+- Sum: 15
+- Average: 3.0
+
+FILE 4.py - Quick Test:
+- List: [10, 20, 30]
+- Swap indices 0 and 2: [30, 20, 10]
+
+FILE 5.py - Quick Test:
+- Dict: {'a': 1, 'b': 2}
+- Keys: ['a', 'b']
+- Values: [1, 2]
+
+FILE 6.py - Quick Test:
+- List: [1, 1, 2, 2, 2, 3]
+- Frequency: {1: 2, 2: 3, 3: 1}
+
+FILE 7.py - Quick Test:
+- Dict: {'key1': 'value1'}
+- Check 'key1': True
+- Check 'key2': False
+
+FILE 8.py - Quick Test:
+- Grid: [[1, 0], [0, 1]]
+- Cell (0, 0) neighbors: Down (0,0), Right (0,1)
+- Obstacles: 2
+
+================================================================================
+COMMON EDGE CASES TO TEST
+================================================================================
+
+1. Empty list operations
+2. Single element list
+3. All elements same (duplicates)
+4. Negative indices (where applicable)
+5. Out of range indices
+6. Empty dictionary
+7. Nested structures
+8. Mixed data types
+9. Very large lists
+10. Boundary conditions (grid edges, corners)
+
+================================================================================
+
