@@ -24,10 +24,9 @@ def encode(x, bits):
 # -------- Initialize Population --------
 def initialize_population(pop_size, bits, lower, upper):
     population = []
-    while len(population) < pop_size:
+    for _ in range(pop_size):
         x = random.randint(lower, upper)
-        if user_function(x) != 1:   # avoid optimal initially
-            population.append([int(b) for b in format(x, f'0{bits}b')])
+        population.append([int(b) for b in format(x, f'0{bits}b')])
     return population
 
 
@@ -66,7 +65,7 @@ def tournament_selection(population, pop_size):
 
         print(f"Match {i+1}: S{a+1} (f={f1}) vs S{b+1} (f={f2})")
 
-        if f1 < f2:
+        if f1 <= f2:
             new_population.append(population[a].copy())
         else:
             new_population.append(population[b].copy())
@@ -126,7 +125,7 @@ def genetic_algorithm():
 
     generation = 1
 
-    # Store initial best
+    # Store initial best (minimization: lower f(x) is better)
     initial_best_index = min(
         range(pop_size),
         key=lambda i: user_function(decode(population[i]))
@@ -139,6 +138,10 @@ def genetic_algorithm():
         print_matrix(population, "Initial Population")
         print_table(population, "Initial Population Details")
 
+        # Elitism: save best (lowest f) before selection so we never lose it
+        best_idx = min(range(pop_size), key=lambda i: user_function(decode(population[i])))
+        elite = population[best_idx].copy()
+
         population = tournament_selection(population, pop_size)
         print_table(population, "After Selection")
 
@@ -146,6 +149,12 @@ def genetic_algorithm():
         print_table(population, "After Crossover")
 
         population = mutation(population, bits)
+
+        # Elitism: replace worst (highest f) with saved best if better (lower f)
+        worst_idx = max(range(pop_size), key=lambda i: user_function(decode(population[i])))
+        if user_function(decode(elite)) < user_function(decode(population[worst_idx])):
+            population[worst_idx] = elite
+
         print_table(population, "After Mutation")
 
         best_index = min(
@@ -161,7 +170,7 @@ def genetic_algorithm():
 
         generation += 1
 
-    # Final Best
+    # Final Best (lowest f(x) in final population)
     final_best_index = min(
         range(pop_size),
         key=lambda i: user_function(decode(population[i]))
