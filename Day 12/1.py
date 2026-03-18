@@ -116,7 +116,7 @@ def draw_marks(screen, board):
             )
 
 
-def draw_status(screen, game_over):
+def draw_status(screen, game_over, status):
     status_rect = pygame.Rect(0, BOARD_SIZE, WIDTH, HEIGHT - BOARD_SIZE)
     pygame.draw.rect(screen, BG_COLOR, status_rect)
 
@@ -125,13 +125,22 @@ def draw_status(screen, game_over):
     pygame.draw.rect(
         screen,
         indicator_color,
-        pygame.Rect(30, BOARD_SIZE + 40, WIDTH - 60, 20),
+        pygame.Rect(30, BOARD_SIZE + 60, WIDTH - 60, 20),
         border_radius=10,
     )
 
+    # Render the status text
+    font = pygame.font.SysFont(None, 40)
+    text = font.render(status, True, TEXT_COLOR)
+    text_rect = text.get_rect(center=(WIDTH // 2, BOARD_SIZE + 30))
+    screen.blit(text, text_rect)
 
-def reset_game():
-    return [" "] * 9, False, "Your turn (O)"
+
+def reset_game(human_starts):
+    if human_starts:
+        return [" "] * 9, False, "Your turn (O)", "O"
+    else:
+        return [" "] * 9, False, "AI thinking...", "X"
 
 
 def main():
@@ -141,7 +150,8 @@ def main():
 
     clock = pygame.time.Clock()
 
-    board, game_over, status = reset_game()
+    human_starts = True
+    board, game_over, status, current_turn = reset_game(human_starts)
 
     while True:
         for event in pygame.event.get():
@@ -150,9 +160,10 @@ def main():
                 sys.exit()
 
             if event.type == pygame.KEYDOWN and event.key == pygame.K_r:
-                board, game_over, status = reset_game()
+                human_starts = not human_starts
+                board, game_over, status, current_turn = reset_game(human_starts)
 
-            if event.type == pygame.MOUSEBUTTONDOWN and not game_over:
+            if event.type == pygame.MOUSEBUTTONDOWN and not game_over and current_turn == "O":
                 mx, my = event.pos
                 if my < BOARD_SIZE:
                     row = my // CELL_SIZE
@@ -169,23 +180,36 @@ def main():
                             game_over = True
                             status = "Draw!"
                         else:
-                            ai_idx = best_move(board)
-                            if ai_idx != -1:
-                                board[ai_idx] = "X"
+                            current_turn = "X"
+                            status = "AI thinking..."
 
-                            if is_winner(board, "X"):
-                                game_over = True
-                                status = "AI wins!"
-                            elif is_full(board):
-                                game_over = True
-                                status = "Draw!"
-                            else:
-                                status = "Your turn (O)"
+        if current_turn == "X" and not game_over:
+            # Force a frame draw so "AI thinking..." is displayed before AI computes move
+            screen.fill(BG_COLOR)
+            draw_grid(screen)
+            draw_marks(screen, board)
+            draw_status(screen, game_over, status)
+            pygame.display.set_caption(f"Tic-Tac-Toe (Minimax AI) | {status} | Press R to restart")
+            pygame.display.flip()
+
+            ai_idx = best_move(board)
+            if ai_idx != -1:
+                board[ai_idx] = "X"
+
+            if is_winner(board, "X"):
+                game_over = True
+                status = "AI wins!"
+            elif is_full(board):
+                game_over = True
+                status = "Draw!"
+            else:
+                current_turn = "O"
+                status = "Your turn (O)"
 
         screen.fill(BG_COLOR)
         draw_grid(screen)
         draw_marks(screen, board)
-        draw_status(screen, game_over)
+        draw_status(screen, game_over, status)
 
         pygame.display.set_caption(f"Tic-Tac-Toe (Minimax AI) | {status} | Press R to restart")
 
